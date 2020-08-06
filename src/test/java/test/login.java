@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -61,7 +62,7 @@ public class login {
 		}
 		
 		//Find login and login
-		
+		@Test
 		public static void login() throws InterruptedException {
 			
 			System.out.println("Start login");
@@ -69,10 +70,30 @@ public class login {
 			String email = "testlate@yahoo.com";
 			String password = "11111111";
 			
-			TimeUnit.SECONDS.sleep(2);
+			//Hard code login navigation
+			TimeUnit.SECONDS.sleep(1);
 			//driver.findElement(MobileBy.AccessibilityId(("Already have an account? Log In"))).click();
 			//driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Already have an account? Log In\"])[3]").click();
 			touchAction.tap(new PointOption().withCoordinates(271,145)).perform();
+			
+			//Input email and password
+			TimeUnit.SECONDS.sleep(1);
+			touchAction.tap(new PointOption().withCoordinates(34,174)).perform();
+			driver.getKeyboard().pressKey(email);
+			
+			TimeUnit.SECONDS.sleep(1);
+			touchAction.tap(new PointOption().withCoordinates(34,264)).perform();
+			driver.getKeyboard().pressKey(password);
+			
+			driver.findElementByName("Next").click();
+			
+			//Deal with notification
+			//Skip for now
+			TimeUnit.SECONDS.sleep(1);
+			driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Maybe later\"]").click();
+			
+			//Validate Today
+			
 		}
 		
 }
