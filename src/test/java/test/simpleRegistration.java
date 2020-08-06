@@ -14,16 +14,14 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.offset.PointOption;
 
 
-
 //String locationOfApp="/Users/satapornworasilpchai/Library/Developer/Xcode/DerivedData/radiant-ehjiavxrjfpydoaaefpmhtjadhjg/Build/Products/Debug-iphonesimulator/Kismet.app";
 
-public class FirstIOSTest {
+public class simpleRegistration {
 	
 	private static IOSDriver driver;
 
 	public static void main(String[] args) throws InterruptedException, MalformedURLException {
 	
-		
 		startUp();
 		
 		createNewUser();
@@ -55,7 +53,7 @@ public class FirstIOSTest {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.tap(new PointOption().withCoordinates(183, 632)).perform();
 		
-		System.out.println("Finish test");
+		System.out.println("Finish startup");
 		
 	}
 	
@@ -114,6 +112,7 @@ public class FirstIOSTest {
 				"//XCUIElementTypeOther[@name=\"The Martian\"]"
 				);
 		
+		//Start the picking process. 
 		TimeUnit.SECONDS.sleep(2);
 		
 		for (Iterator<String> i = pickMoviesList.iterator(); i.hasNext();) {
@@ -121,18 +120,6 @@ public class FirstIOSTest {
 		    System.out.println(item);
 		    driver.findElementByXPath(item).click();
 		}
-		
-//		driver.findElementByXPath(pickMovies.get(0)).click();
-//		driver.findElementByXPath(pickMovies.get(1)).click();
-//		driver.findElementByXPath(pickMovies.get(2)).click();
-//		driver.findElementByXPath(pickMovies.get(3)).click();
-//		driver.findElementByXPath(pickMovies.get(4)).click();
-//		driver.findElementByXPath(pickMovies.get(5)).click();
-//		driver.findElementByXPath(pickMovies.get(6)).click();
-//		driver.findElementByXPath(pickMovies.get(7)).click();
-//		driver.findElementByXPath(pickMovies.get(8)).click();
-//		driver.findElementByXPath(pickMovies.get(9)).click();
-//		driver.findElementByXPath(pickMovies.get(10)).click();
 		
 		//driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Next\"])[2])").click();
 		driver.findElementByName("Next").click();
@@ -143,5 +130,7 @@ public class FirstIOSTest {
 		driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Maybe later\"]").click();
 		
 	}
+	
+	
 	
 }

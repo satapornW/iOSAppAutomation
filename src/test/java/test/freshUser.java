@@ -1,9 +1,8 @@
 package test;
 
-import static org.apache.commons.text.CharacterPredicates.DIGITS;
-import static org.apache.commons.text.CharacterPredicates.LETTERS;
-
 import org.apache.commons.text.RandomStringGenerator;
+
+//Create a seperate file for creating a new user with unique name and email
 
 public class freshUser {
 
@@ -14,8 +13,5 @@ public class freshUser {
 
 	String fullName = firstName + "_" + lastName;
 	String email = firstName + "_" + lastName + "@yahoo.com";
-	
-	
-	
 	 
 }
