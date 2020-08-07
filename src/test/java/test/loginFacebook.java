@@ -1,8 +1,7 @@
 /*
- * Note you should not run google auth too many times in a a day.
- * Your account may get deactivated.
+ * Safari will remember the login, so we need to check for if the user already logged in.
+ * If the user already logged in we need a different flow after the Facebook button init. 
  */
-
 
 package test;
 
@@ -14,10 +13,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.HideKeyboardStrategy;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class loginGoogle {
+public class loginFacebook {
 
 	private static IOSDriver driver;
 	private static TouchAction touchAction;
@@ -25,7 +23,7 @@ public class loginGoogle {
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		
 		startUp();
-		loginWithGoogle();
+		loginWithFacebook();
 		
 	}
 	
@@ -51,48 +49,44 @@ public class loginGoogle {
 		System.out.println("Start wait");
 		TimeUnit.SECONDS.sleep(15);
 		System.out.println("End wait");
+	
 	}
 	
-	//Google login attempt
-	
-	public static void loginWithGoogle() throws InterruptedException {
+	public static void loginWithFacebook() throws InterruptedException {
 		
-		//Gmail credential
-		System.out.println("Start google");
-		String email = "twofive42";
+		//Facebook credential
+		System.out.println("Start Facebook");
+		String email = "ni_shuhjhh_mo@tfbnw.net";
+		String password = "aaaa1111!";
 		
 		touchAction = new TouchAction(driver);
-		touchAction.tap(new PointOption().withCoordinates(180, 530)).perform();
+		touchAction.tap(new PointOption().withCoordinates(180, 580)).perform();
 		
 		TimeUnit.SECONDS.sleep(5);
 		
 		//Continue
+		System.out.println("Enter facebook modal Facebook");
+		
 		touchAction.tap(new PointOption().withCoordinates(250, 465)).perform();
 		
-		//Init Gmail 
-		//driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Sign in - Google Accounts\"]/XCUIElementTypeOther[5]").sendKeys(email);
+		
+		TimeUnit.SECONDS.sleep(5);
+		
+		//Facebook page
+		driver.findElementByXPath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeTextField").sendKeys(email);
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElementByXPath("//XCUIElementTypeOther[@name=\"main\"]/XCUIElementTypeSecureTextField").sendKeys(password);
+		TimeUnit.SECONDS.sleep(1);
+		//Log in
+		driver.findElementByXPath("//XCUIElementTypeButton[@name=\"Log In\"]").click();
+		
+		
+		//Facebook confirm
 		TimeUnit.SECONDS.sleep(2);
-		System.out.println("Type email");
-		touchAction.tap(new PointOption().withCoordinates(90, 290)).perform();
-		driver.getKeyboard().pressKey(email);
-		TimeUnit.SECONDS.sleep(1);
-		driver.findElementByXPath(String.format("//XCUIElementTypeButton[@name='%s']", "Done")).click();
-		TimeUnit.SECONDS.sleep(1);
-		touchAction.tap(new PointOption().withCoordinates(300, 500)).perform();
 		
-		TimeUnit.SECONDS.sleep(3);
-		
-		//Input password
-		//driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Sign in - Google Accounts\"]/XCUIElementTypeOther[4]").sendKeys("aaaa1111!");
-		System.out.println("Type password");
-		touchAction.tap(new PointOption().withCoordinates(90, 290)).perform();
-		driver.getKeyboard().pressKey("aaaa1111!");
-		TimeUnit.SECONDS.sleep(1);
-		driver.findElementByXPath(String.format("//XCUIElementTypeButton[@name='%s']", "Done")).click();
-		TimeUnit.SECONDS.sleep(1);
-		touchAction.tap(new PointOption().withCoordinates(300, 500)).perform();
-		
-		TimeUnit.SECONDS.sleep(4);
+		touchAction.tap(new PointOption().withCoordinates(250, 465)).perform();
+
+		TimeUnit.SECONDS.sleep(2);
 		
 		//Deal with notification modal
 		driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Turn on notifications\"]").click();
