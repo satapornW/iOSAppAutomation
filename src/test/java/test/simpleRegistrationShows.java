@@ -13,10 +13,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.offset.PointOption;
 
-
-//String locationOfApp="/Users/satapornworasilpchai/Library/Developer/Xcode/DerivedData/radiant-ehjiavxrjfpydoaaefpmhtjadhjg/Build/Products/Debug-iphonesimulator/Kismet.app";
-
-public class simpleRegistration {
+public class simpleRegistrationShows {
 	
 	private static IOSDriver driver;
 

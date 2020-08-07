@@ -20,7 +20,7 @@ import io.appium.java_client.touch.offset.PointOption;
  * We'll login with a static profile
  */
 
-public class login {
+public class loginEmail {
 	
 	private static IOSDriver driver;
 	private static TouchAction touchAction;
@@ -62,7 +62,7 @@ public class login {
 		 * We are selecting email registration
 		 */
 		touchAction = new TouchAction(driver);
-		touchAction.tap(new PointOption().withCoordinates(183, 632)).perform();
+		touchAction.tap(new PointOption().withCoordinates(180, 630)).perform();
 		
 		
 		System.out.println("Finish startup");
