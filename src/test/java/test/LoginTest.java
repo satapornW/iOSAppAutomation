@@ -1,41 +1,26 @@
 package test;
 
+import static org.junit.Assert.*;
+
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebElement;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.Test;
 
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.offset.PointOption;
 
-/*
- * Validate that login with existing user works
- * We'll login with a static profile
- */
-
-public class loginEmail {
+public class LoginTest {
 	
 	private static IOSDriver driver;
 	private static TouchAction touchAction;
 	
-	public static void main(String[] args) throws InterruptedException, MalformedURLException {
-		
-		startUp();
-		
-		login();
-	}
-	
-	//initiate Simulator and login
-
-	public static void startUp() throws MalformedURLException, InterruptedException {
+	@Test
+	public void startUp() throws MalformedURLException, InterruptedException {
 		
 		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability("platformName", "IOS");
@@ -56,8 +41,8 @@ public class loginEmail {
 	}
 		
 	//Find login and log-in
-
-	public static void login() throws InterruptedException {
+	@Test
+	public void loginEmail() throws InterruptedException {
 		
 		/*
 		 * Hard code position because selector does not exists on the main page
@@ -88,7 +73,7 @@ public class loginEmail {
 		touchAction.tap(new PointOption().withCoordinates(34,264)).perform();
 		driver.getKeyboard().pressKey(password);
 		
-		driver.findElementByName("Nexttt").click();
+		driver.findElementByName("Next").click();
 		
 		//Deal with notification
 		//Skip for now
@@ -98,5 +83,37 @@ public class loginEmail {
 		//Validate Today
 		
 	}
+	
+	@Test
+	public void testDiscover() throws InterruptedException, MalformedURLException {
 		
+		//Default restaurants
+		TimeUnit.SECONDS.sleep(2);
+		touchAction.tap(new PointOption().withCoordinates(120,750)).perform();
+		String nameOfBand = driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Trending\"]").getAttribute("name");
+		assertEquals("Trending", nameOfBand);
+		
+		String askBand = driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Latest restaurants asks\"]").getAttribute("name");
+		assertEquals("Latest restaurants asks", askBand);
+		
+		//Check out tv and movies
+		driver.findElementByXPath("//XCUIElementTypeOther[@name=\"TV & Movies\"]").click();
+		String askMovieBand = driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Latest TV & Movies asks\"]").getAttribute("name");
+		assertEquals("Latest TV & Movies asks", askMovieBand);
+		
+	}
+	
+	@Test
+	public void testProfile() throws  InterruptedException, MalformedURLException{
+		
+		TimeUnit.SECONDS.sleep(1);
+		touchAction.tap(new PointOption().withCoordinates(340,75)).perform();
+		TimeUnit.SECONDS.sleep(1);
+		String profileName = driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"test late\"])[2]").getAttribute("name");
+		assertEquals("test late", profileName);
+		
+	}
+	
+	
+
 }

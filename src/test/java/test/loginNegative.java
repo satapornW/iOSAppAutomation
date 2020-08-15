@@ -120,8 +120,6 @@ public class loginNegative {
 		TimeUnit.SECONDS.sleep(2);
 		driver.findElementByXPath("//XCUIElementTypeButton[@name=\"header-back\"]").click();
 		
-		
 	}
-	
 
 }

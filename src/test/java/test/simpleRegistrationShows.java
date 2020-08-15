@@ -16,6 +16,7 @@ import io.appium.java_client.touch.offset.PointOption;
 public class simpleRegistrationShows {
 	
 	private static IOSDriver driver;
+	private static TouchAction touchAction;
 
 	public static void main(String[] args) throws InterruptedException, MalformedURLException {
 	
@@ -47,7 +48,7 @@ public class simpleRegistrationShows {
 		 * Hard code position because selector does not exists on the main page
 		 * We are selecting email registration
 		 */
-		TouchAction touchAction = new TouchAction(driver);
+		
 		touchAction.tap(new PointOption().withCoordinates(183, 632)).perform();
 		
 		System.out.println("Finish startup");

@@ -13,5 +13,5 @@ public class freshUser {
 
 	String fullName = firstName + "_" + lastName;
 	String email = firstName + "_" + lastName + "@yahoo.com";
-	 
+	
 }
