@@ -15,7 +15,7 @@ Below are some of the Key features that we will try to automate. Some will not b
 - Create new user
 - Login
 
-- Create a recommending
+- Create a recommendation
 - Create a list
 - Create an ask
 
