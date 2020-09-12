@@ -94,7 +94,6 @@ public class loginEmail {
 		//Skip for now
 		TimeUnit.SECONDS.sleep(1);
 		driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Maybe later\"]").click();
-		
 		//Validate Today
 		
 	}
