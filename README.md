@@ -4,6 +4,7 @@ This automation project requires extensive setup and configuration.
 - Appium server
 - Xcode
 - Source code to build the app
+- clone this repo and open in eclipse
 
 Find element with Appium, prefer to user asscesibility ID. XPath and coornates may be nesscary at times but should be avoided.
 (https://github.com/satapornW/iOSAppAutomation/blob/master/sampleAppium.png)
